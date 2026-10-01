@@ -13,6 +13,11 @@ const ITEMS = [
   { description: "Jogo de 6 Taças", price: 14239 },             // 2
   { description: "Edredom Kit Roupa de Cama", price: 25000 },   // 3
   { description: "Lavadora de Roupas Midea", price: 237400 },   // 4
+  { description: "Smart TV 4K 50” LG", price: 211700 },         // 5
+  { description: "Conjunto de utensílios de cozinha", price: 30157 }, // 6
+  { description: "Aparelho de Jantar e Chá", price: 29900 },    // 7
+  { description: "Smart Speaker com Alexa", price: 45900 },     // 8
+  { description: "Kit 4 Peças de Cozinha", price: 7890 },       // 9
 ];
 
 export default async function handler(req, res) {

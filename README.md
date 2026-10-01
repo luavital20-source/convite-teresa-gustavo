@@ -16,10 +16,13 @@ de nenhuma pasta de imagens.
 
 ## Lista de presentes
 
-5 presentes, com os mesmos valores do convite da Marjorie & Nathan:
+10 presentes, com os mesmos valores do convite da Marjorie & Nathan:
 Jogo de Panelas Tramontina (R$ 323,29), Jogo de jantar de cerâmica (R$ 657,09),
-Jogo de 6 Taças (R$ 142,39), Edredom Kit Roupa de Cama (R$ 250,00) e
-Lavadora de Roupas Midea (R$ 2.374,00). Cada um tem dois botões:
+Jogo de 6 Taças (R$ 142,39), Edredom Kit Roupa de Cama (R$ 250,00),
+Lavadora de Roupas Midea (R$ 2.374,00), Smart TV 4K 50” LG (R$ 2.117,00),
+Conjunto de utensílios de cozinha (R$ 301,57), Aparelho de Jantar e Chá (R$ 299,00),
+Smart Speaker com Alexa (R$ 459,00) e Kit 4 Peças de Cozinha (R$ 78,90).
+Cada um tem dois botões:
 
 - **Pagar com Pix** — abre uma janela com o código Pix *copia e cola* já com o valor.
   Configure `PIX_CHAVE` (só números/texto da chave), `PIX_CHAVE_TEXTO` (como ela
