@@ -34,11 +34,18 @@ Cada um tem dois botões:
 **Se adicionar, remover ou mudar o preço de um presente, mude igual em `ITEMS` no
 `api/checkout.js`** — a posição na lista é o `i` do botão.
 
-## Ainda a definir
+## Música
 
-- **Música** — salvar o arquivo como `musica.mp3` na raiz e preencher
-  `musicaArquivo: 'musica.mp3'` no bloco `CONFIG`, no fim do `index.html`.
-  O botão flutuante de pausar só aparece quando há música.
+**Counting Stars — OneRepublic** (`musica.mp3`, na raiz).
+
+A música começa quando o convidado toca em **"toque para abrir"** (o gesto que o
+iPhone exige para liberar o som), toca em loop, e o botão flutuante no canto pausa
+e volta a tocar. O nome da música aparece no rodapé.
+
+O arquivo enviado era AAC/M4A com extensão .mp3; foi convertido para MP3 de
+128 kbps para tocar em qualquer celular.
+
+Para trocar, substitua o `musica.mp3` e atualize `musica` e `artista` no `CONFIG`.
 
 ## Como editar
 

@@ -616,11 +616,12 @@
     <div class="divider" style="margin:12px auto 16px;max-width:200px;"><div class="ln"></div><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.5 3.5L10 5 6.5 6.5 5 10 3.5 6.5 0 5l3.5-1.5z" fill="#8DB085"/></svg><div class="ln r"></div></div>
     <p class="footer-note" id="footerDate">09 de Outubro de 2026</p>
     <p class="footer-note" style="margin-top:8px;opacity:.7;">Feito com amor para celebrar o nosso dia</p>
+    <p class="footer-note" style="margin-top:8px;opacity:.7;">♪ <span id="musicSong"></span> · <span id="musicArtist"></span></p>
   </footer>
 
 </div><!-- /#main -->
 
-<!-- player de áudio escondido. Quando a música chegar, salve como musica.mp3 na raiz. -->
+<!-- player de áudio escondido (musica.mp3, na raiz) -->
 <div id="audioHidden" aria-hidden="true" style="position:fixed;width:1px;height:1px;left:-9999px;top:-9999px;opacity:0;pointer-events:none;overflow:hidden;">
   <audio id="bgAudio" loop preload="auto"></audio>
 </div>
@@ -647,8 +648,10 @@ const CONFIG = {
 
   whatsapp: '5588996487822',
 
-  // música: quando chegar, salve o arquivo como musica.mp3 na raiz e troque '' por 'musica.mp3'
-  musicaArquivo: '',
+  // música de fundo (arquivo na raiz do site)
+  musica:  'Counting Stars',
+  artista: 'OneRepublic',
+  musicaArquivo: 'musica.mp3',
 
   versiculo:    'O amor é paciente, o amor é bondoso. Tudo sofre, tudo crê, tudo espera, tudo suporta.',
   versiculoRef: '1 Coríntios 13:4-7',
@@ -666,6 +669,8 @@ txt('footerNames',nomesHTML);
 txt('heroDate',CONFIG.dataTexto); txt('footerDate',CONFIG.dataTexto);
 txt('verseText', `"${CONFIG.versiculo}"`);
 txt('verseRef', CONFIG.versiculoRef);
+txt('musicSong', CONFIG.musica);
+txt('musicArtist', CONFIG.artista);
 var _mb=document.getElementById('mapBtn'); if(_mb) _mb.href=CONFIG.mapsUrl;
 document.title = CONFIG.noivos + ' — Casamento';
 
