@@ -3,7 +3,7 @@
 
 // InfiniteTag dos noivos (sem o $). Enquanto estiver vazio, o convidado volta
 // para a lista com o aviso de que o cartão será liberado em breve.
-const HANDLE = "";
+const HANDLE = "maquinainmune_2";
 
 // ordem = índice do botão (?i=N). price em CENTAVOS.
 // O preço vem daqui, nunca do navegador.

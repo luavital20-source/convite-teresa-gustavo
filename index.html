@@ -787,7 +787,7 @@ function startCountdown(){
         <span>Copiar código Pix</span>
       </button>
       <p class="pixm-hint">Cole no app do seu banco em <strong>Pix copia e cola</strong>. O valor já vai preenchido.</p>
-      <div class="pixm-chave">Ou use a chave Pix<b id="pixmChave"></b></div>
+      <div class="pixm-chave">Ou use a chave Pix (aleatória)<b id="pixmChave"></b></div>
     </div>
     <p class="pixm-hint" id="pixmAviso" hidden></p>
   </div>
@@ -797,7 +797,7 @@ function startCountdown(){
    Preencha a chave, o titular e a cidade quando chegarem. Enquanto a chave
    estiver vazia, a janela avisa que o Pix será liberado em breve. */
 (function(){
-  var PIX_CHAVE='', PIX_CHAVE_TEXTO='', PIX_TITULAR='Fatima Teresa e Gustavo', PIX_CIDADE='Barbalha';
+  var PIX_CHAVE='13bab672-6a74-464c-872e-7e611ef9bd70', PIX_CHAVE_TEXTO='13bab672-6a74-464c-872e-7e611ef9bd70', PIX_TITULAR='Fatima Teresa e Gustavo', PIX_CIDADE='Barbalha';
   function crc16(str){var c=0xFFFF;for(var i=0;i<str.length;i++){c^=str.charCodeAt(i)<<8;for(var j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021)&0xFFFF:(c<<1)&0xFFFF;}return c.toString(16).toUpperCase().padStart(4,'0');}
   function ascii(str){return str.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\x20-\x7E]/g,'').toUpperCase();}
   function pixCode(valor){var tlv=function(id,v){return id+String(v.length).padStart(2,'0')+v;};var p='';p+=tlv('00','01');p+=tlv('26',tlv('00','br.gov.bcb.pix')+tlv('01',PIX_CHAVE));p+=tlv('52','0000');p+=tlv('53','986');if(valor)p+=tlv('54',Number(valor).toFixed(2));p+=tlv('58','BR');p+=tlv('59',ascii(PIX_TITULAR).slice(0,25));p+=tlv('60',ascii(PIX_CIDADE).slice(0,15));p+=tlv('62',tlv('05','***'));p+='6304';return p+crc16(p);}

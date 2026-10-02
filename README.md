@@ -25,20 +25,17 @@ Smart Speaker com Alexa (R$ 459,00) e Kit 4 Peças de Cozinha (R$ 78,90).
 Cada um tem dois botões:
 
 - **Pagar com Pix** — abre uma janela com o código Pix *copia e cola* já com o valor.
-  Configure `PIX_CHAVE` (só números/texto da chave), `PIX_CHAVE_TEXTO` (como ela
-  aparece na tela) e `PIX_TITULAR`, no último `<script>` do `index.html`. Enquanto a
-  chave estiver vazia, a janela avisa que o Pix será liberado em breve.
+  Chave aleatória `13bab672-6a74-464c-872e-7e611ef9bd70`, em `PIX_CHAVE`, no último
+  `<script>` do `index.html`.
 - **Pagar com cartão** — vai para `/api/checkout?i=N`, que cria um link de pagamento
-  na InfinitePay. Configure a InfiniteTag em `HANDLE`, no topo de `api/checkout.js`.
-  Enquanto estiver vazia, o convidado volta para a lista com um aviso. Só funciona
-  com o site publicado na Vercel.
+  na InfinitePay da InfiniteTag `$maquinainmune_2` (`HANDLE`, no topo de
+  `api/checkout.js`). Só funciona com o site publicado na Vercel.
 
 **Se adicionar, remover ou mudar o preço de um presente, mude igual em `ITEMS` no
 `api/checkout.js`** — a posição na lista é o `i` do botão.
 
 ## Ainda a definir
 
-- **Chave Pix** e **InfiniteTag** (acima).
 - **Música** — salvar o arquivo como `musica.mp3` na raiz e preencher
   `musicaArquivo: 'musica.mp3'` no bloco `CONFIG`, no fim do `index.html`.
   O botão flutuante de pausar só aparece quando há música.
