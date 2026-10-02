@@ -854,12 +854,12 @@ function startCountdown(){
   });
 
   // volta do /api/checkout quando o cartão ainda não está liberado ou falhou
-  var q=new URLSearchParams(location.search).get('cartao');
+  var qs=new URLSearchParams(location.search), q=qs.get('cartao'), motivo=qs.get('motivo')||'';
   if(q){
     history.replaceState(null,'',location.pathname+'#gifts');
     var msg=q==='indisponivel'
       ? 'O pagamento com cartão será liberado em breve. Volte aqui daqui a alguns dias. 🌿'
-      : 'Não conseguimos abrir o pagamento com cartão agora. Tente de novo em instantes ou use o Pix.';
+      : 'Não conseguimos abrir o pagamento com cartão agora. Tente de novo em instantes ou use o Pix.'+(motivo?' (detalhe: '+motivo+')':'');
     var abrirMsg=function(){abrir('pagamento com cartão','','',msg);};
     var splash=document.getElementById('splash');
     splash.addEventListener('click',function(){setTimeout(function(){abrirMsg();document.getElementById('gifts').scrollIntoView();},1000);},{once:true});

@@ -29,24 +29,37 @@ export default async function handler(req, res) {
     return res.redirect(302, "/?cartao=indisponivel");
   }
   const item = ITEMS[i];
-  try {
-    const r = await fetch("https://api.checkout.infinitepay.io/links", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        handle: HANDLE,
-        order_nsu: `tg-${i}-${Date.now()}`,
-        items: [{ quantity: 1, price: item.price, description: item.description }],
-      }),
-    });
-    const data = await r.json().catch(() => ({}));
-    if (!r.ok || !data.url) {
-      console.error("InfinitePay erro:", r.status, JSON.stringify(data));
-      return res.redirect(302, "/?cartao=erro");
+  const body = JSON.stringify({
+    handle: HANDLE,
+    order_nsu: `tg-${i}-${Date.now()}`,
+    items: [{ quantity: 1, price: item.price, description: item.description }],
+  });
+
+  // Tenta o endereço usado no convite da Marjorie e, se falhar, o endereço
+  // documentado da InfinitePay (link integrado).
+  const ENDPOINTS = [
+    "https://api.checkout.infinitepay.io/links",
+    "https://api.infinitepay.io/invoices/public/checkout/links",
+  ];
+  const motivos = [];
+  for (const url of ENDPOINTS) {
+    try {
+      const r = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+      });
+      const texto = await r.text();
+      let data = {};
+      try { data = JSON.parse(texto); } catch (_) {}
+      if (r.ok && data.url) return res.redirect(302, data.url);
+      console.error("InfinitePay erro:", url, r.status, texto.slice(0, 500));
+      motivos.push(`${r.status} ${texto.slice(0, 140)}`);
+    } catch (e) {
+      console.error("InfinitePay exceção:", url, e);
+      motivos.push(String(e && e.message || e).slice(0, 140));
     }
-    return res.redirect(302, data.url);
-  } catch (e) {
-    console.error("InfinitePay exceção:", e);
-    return res.redirect(302, "/?cartao=erro");
   }
+  const motivo = encodeURIComponent(motivos.join(" | ").slice(0, 300));
+  return res.redirect(302, `/?cartao=erro&motivo=${motivo}`);
 }
